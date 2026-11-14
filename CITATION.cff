@@ -8,6 +8,7 @@ authors:
     affiliation: "The Affiliated Huai'an No.1 People's Hospital of Nanjing Medical University, Huai'an, Jiangsu, China"
 version: 1.0.0
 date-released: 2026-11-14
+doi: 10.5281/zenodo.24211370
 license: MIT
 repository-code: "https://github.com/morrosun/oope02-rheumatic-pain-cascade"
 keywords:

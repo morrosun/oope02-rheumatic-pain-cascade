@@ -1,5 +1,7 @@
 # Rheumatic pain care cascade across seven ageing cohorts
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24211370.svg)](https://doi.org/10.5281/zenodo.24211370)
+
 Analysis code for a cross-national study of the care cascade for rheumatic pain — from
 reporting pain, to carrying a diagnosis of arthritis or rheumatism, to receiving treatment —
 in seven harmonised ageing cohorts: CHARLS (China), ELSA (UK), HRS (USA), KLoSA (Korea),
@@ -74,9 +76,9 @@ The remaining scripts are upstream exploration (`01`–`15`), audit and reconcil
 If you use this code, cite the archived release:
 
 > Wang K. *Analysis code for: The rheumatic pain care cascade across seven ageing cohorts*
-> (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX
+> (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.24211370
 
-The DOI is minted on release; the concept DOI always resolves to the latest version.
+Concept DOI (always the latest version): https://doi.org/10.5281/zenodo.24211369
 
 ## License
 

@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the archived release (see the DOI below)."
+title: "Analysis code for: The rheumatic pain care cascade across seven ageing cohorts"
+type: software
+authors:
+  - family-names: Wang
+    given-names: Kai
+    affiliation: "The Affiliated Huai'an No.1 People's Hospital of Nanjing Medical University, Huai'an, Jiangsu, China"
+version: 1.0.0
+date-released: 2026-11-14
+license: MIT
+repository-code: "https://github.com/morrosun/oope02-rheumatic-pain-cascade"
+keywords:
+  - care cascade
+  - arthritis
+  - musculoskeletal pain
+  - ageing cohorts
+  - cross-national comparison

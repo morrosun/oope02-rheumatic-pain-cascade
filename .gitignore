@@ -1,0 +1,19 @@
+# data (never redistributed)
+data/*
+!data/README.md
+data_raw/
+
+# generated results
+outputs/
+*.log
+
+# python / R
+__pycache__/
+*.py[cod]
+.Rhistory
+.RData
+.Rproj.user/
+
+# OS
+.DS_Store
+Thumbs.db

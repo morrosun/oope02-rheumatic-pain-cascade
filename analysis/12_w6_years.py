@@ -1,0 +1,30 @@
+import os
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+RAW = os.environ.get("AGING_DB_RAW_ROOT", os.path.join(ROOT, "data_raw"))
+OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
+DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
+# -*- coding: utf-8 -*-
+import pyreadstat, pandas as pd, os
+base=os.path.join(RAW, "CHARLS")
+L=[]; ids={}
+for y in ["2021","2022","2023"]:
+    p=os.path.join(base,y,"Health_Status_and_Functioning.dta")
+    df,_=pyreadstat.read_dta(p,usecols=["ID","da011_15_","da021_15_","da069","da071","da072","db001"])
+    ids[y]=set(df["ID"].astype(str))
+    L.append(f"\n## {y}  rows={len(df)}")
+    L.append(f"  da011_15_ 新诊断关节炎: 1={(df['da011_15_']==1).sum()}  n={df['da011_15_'].notna().sum()}")
+    L.append(f"  da021_15_ 用药:        1={(df['da021_15_']==1).sum()}  n={df['da021_15_'].notna().sum()}  → {(df['da021_15_']==1).sum()/max(1,df['da021_15_'].notna().sum())*100:.1f}%")
+    vc=df["da069"].value_counts().sort_index()
+    L.append(f"  da069 体痛 5 级: " + ", ".join(f"{k}:{v}" for k,v in vc.items()))
+    sev=(df["da069"]>=4).sum()
+    L.append(f"  da069>=4 (Quite a bit/Very): {sev} ({sev/df['da069'].notna().sum()*100:.1f}%)")
+    L.append(f"  da071 非处方止痛药: 1={(df['da071']==1).sum()} / n={df['da071'].notna().sum()}")
+    L.append(f"  da072 阿片类:       1={(df['da072']==1).sum()} / n={df['da072'].notna().sum()}")
+    L.append(f"  db001 穿衣: 1={(df['db001']==1).sum()} >=3={(df['db001']>=3).sum()} n={df['db001'].notna().sum()}")
+L.append("\n## 重叠（按 ID）")
+L.append(f"  2021∩2022 = {len(ids['2021']&ids['2022'])}")
+L.append(f"  2021∩2023 = {len(ids['2021']&ids['2023'])}")
+L.append(f"  2022∩2023 = {len(ids['2022']&ids['2023'])}")
+L.append(f"  并集 = {len(ids['2021']|ids['2022']|ids['2023'])}")
+open(os.path.join(OUT,"12_w6_years.txt"),"w",encoding="utf-8").write("\n".join(L))
+print("\n".join(L))

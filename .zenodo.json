@@ -1,0 +1,24 @@
+{
+  "title": "Analysis code for: The rheumatic pain care cascade across seven ageing cohorts",
+  "upload_type": "software",
+  "description": "Python and R code for a cross-national analysis of the rheumatic pain care cascade (pain to diagnosis to treatment) in seven harmonised ageing cohorts: CHARLS, ELSA, HRS, KLoSA, LASI, MHAS and SHARE. Includes weighted and age-standardised cascade rates with cluster-bootstrap intervals, cohort-specific logistic models with DerSimonian-Laird pooling, functional-outcome models, the incident-diagnosis validation, sensitivity analyses and figure generation. No respondent-level data are included.",
+  "creators": [
+    {
+      "name": "Wang, Kai",
+      "affiliation": "The Affiliated Huai'an No.1 People's Hospital of Nanjing Medical University, Huai'an, Jiangsu, China"
+    }
+  ],
+  "keywords": [
+    "care cascade",
+    "arthritis",
+    "rheumatic pain",
+    "musculoskeletal pain",
+    "ageing cohorts",
+    "cross-national comparison",
+    "undiagnosed disease"
+  ],
+  "license": "MIT",
+  "version": "1.0.0",
+  "language": "eng",
+  "access_right": "open"
+}

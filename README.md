@@ -17,7 +17,7 @@ interchangeable, the code builds two panels that are analysed separately and nev
 
 ## What this repository contains
 
-- `analysis/` — 44 Python scripts: variable extraction, cascade construction, weighted and
+- `analysis/` — 32 Python scripts: variable extraction, cascade construction, weighted and
   age-standardised rates, cohort-specific logistic models with DerSimonian–Laird pooling,
   sensitivity analyses and reconciliation checks.
 - `figures/` — three R scripts (ggplot2 + patchwork) that reproduce the figures from the
@@ -58,18 +58,23 @@ Run from the repository root, in this order:
 python analysis/16_build_weights.py        # sampling weights per cohort-wave
 python analysis/17_cascade_weighted.py     # cascade steps, weighted + age-standardised
 python analysis/33_std_ci.py               # cluster-bootstrap confidence intervals
+python analysis/42_fig1_funnel.py          # same-denominator cascade for Figure 1
+python analysis/45_wave_weighted.py        # wave-level weighted rates (Table S3)
 python analysis/19_determinants.py         # determinants of diagnosis and treatment
 python analysis/31_outcome_gradient_v2.py  # functional limitation across cascade states
 python analysis/24_incident.py             # incident diagnosis and follow-up function
 python analysis/44_pain_bounds_weighted.py # selection bounds for pain prevalence
-Rscript figures/fig1_cascade.R
-Rscript figures/fig2_coverage_forest.R
-Rscript figures/fig3_outcomes.R
+Rscript figures/fig1_cascade.R             # needs 42_
+Rscript figures/fig2_coverage_forest.R     # needs 33_
+Rscript figures/fig3_outcomes.R            # needs 31_
 ```
 
-The remaining scripts are upstream exploration (`01`–`15`), audit and reconciliation (`29`, `30`,
-`36`, `39`–`41`), or alternative specifications reported as sensitivity analyses (`21`, `26`, `27`,
-`34`, `37`, `38`, `43`). `docs/analysis_notes.md` maps every script to its output.
+All scripts write to `outputs/`; the R scripts write PDF/SVG/TIFF files plus their source-data
+CSV to `outputs/figures/`.
+
+The remaining scripts are upstream exploration and data construction (`05`, `07`, `08`, `10`–`15`), reconciliation checks (`39`, `40`), or
+alternative specifications reported as sensitivity analyses (`21`, `26`–`28`, `34`, `35`, `37`, `38`).
+`docs/analysis_notes.md` maps every script to its output.
 
 ## Citation
 

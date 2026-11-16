@@ -36,7 +36,7 @@ root <- local({
   if (length(f)) normalizePath(file.path(dirname(f), "..")) else normalizePath("..")
 })
 src  <- file.path(root, "outputs", "42_fig1_funnel.csv")
-outd <- file.path(root, "manuscript", "figures")
+outd <- file.path(root, "outputs", "figures")
 dir.create(outd, showWarnings = FALSE, recursive = TRUE)
 
 ## ---- data -----------------------------------------------------------------

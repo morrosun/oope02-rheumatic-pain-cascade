@@ -6,7 +6,6 @@ RAW = os.environ.get("AGING_DB_RAW_ROOT", os.path.join(ROOT, "data_raw"))
 OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 import os, pandas as pd
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 desc=pd.read_csv(os.path.join(OUT,"24_incident_desc.csv"))
 res=pd.read_csv(os.path.join(OUT,"24_incident.csv"))
 pool=pd.read_csv(os.path.join(OUT,"24_incident_pooled.csv"))

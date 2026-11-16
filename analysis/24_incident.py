@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-24: A4 —— 纵向级联：基线"有疼痛但未诊断"者，2 年内获得诊断的比例；
+24: Longitudinal cascade — among people with pain but no diagnosis at baseline, the proportion acquiring a diagnosis within two years;
       以及获得诊断是否与 ADL 改善相关（滞后结局 + 基线 ADL 调整）
 输出：24_incident.csv / 24_incident_pooled.csv / 纵向级联.md
 """
@@ -12,8 +12,6 @@ DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 import os, warnings
 import numpy as np, pandas as pd, pyreadstat, statsmodels.api as sm
 warnings.filterwarnings("ignore")
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
-DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 def num(s): return pd.to_numeric(s,errors="coerce")
 
 def dl(est,se):
@@ -95,14 +93,14 @@ def load(c,cfg):
     cc=[x for x in ["hibpe","diabe","hearte","stroke","cancre","lunge"] if x in d.columns]
     d["comorb"]=(d[cc]==1).sum(axis=1).astype(float); d.loc[d[cc].isna().sum(axis=1)>3,"comorb"]=np.nan
     d["smoke"]=num(d["smoken"]) if "smoken" in d.columns else np.nan
-    # 【P10 修正】财富五分位按 cohort×wave 分层，与 A2（19）口径一致
+    # Wealth quintile stratified by cohort × wave, consistent with 19_determinants.py
     d["wq"]=np.nan
     if cfg["wealth"] in d.columns:
         for _,g in d.groupby("wave"):
             s=num(g[cfg["wealth"]])
             if s.notna().sum()<200: continue
             d.loc[g.index,"wq"]=pd.qcut(s.rank(method="first"),5,labels=False)+1
-    # 【P10 修正】严重度 z 在疼痛者内标准化，与 A3（31）一致
+    # Severity z-score standardised within people with pain, consistent with 31_outcome_gradient_v2.py
     s=pd.Series(d["sev_raw"],dtype=float)
     mu=s[d["pain"]==1].mean(); sd=s[d["pain"]==1].std()
     d["sev_z"]=(s-mu)/sd if sd and sd>0 else np.nan

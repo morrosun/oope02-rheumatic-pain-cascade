@@ -11,13 +11,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RAW = os.environ.get("AGING_DB_RAW_ROOT", os.path.join(ROOT, "data_raw"))
 OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
-import os
 import numpy as np
 import pandas as pd
 import pyreadstat
 
 BASE = os.environ.get("AGING_DB_RAW", os.path.join(ROOT, "data_raw"))
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 CH   = os.path.join(DL, "1. CHARLS  中国/CHARLS_中国/Working_data/charls.dta")
 
 L = []

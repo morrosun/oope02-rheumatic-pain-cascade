@@ -1,21 +1,19 @@
 # -*- coding: utf-8 -*-
-"""32: 生成 A3 修正版可读表"""
+"""32: Readable tables for the functional-outcome model (31)."""
 import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RAW = os.environ.get("AGING_DB_RAW_ROOT", os.path.join(ROOT, "data_raw"))
 OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
-import os
 import pandas as pd, numpy as np
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 res=pd.read_csv(os.path.join(OUT,"31_outcome_v2.csv"))
 pool=pd.read_csv(os.path.join(OUT,"31_pooled_v2.csv"))
 L=[]
 def w(s=""): L.append(str(s))
 
-w('# A3 结局梯度（修正版）')
+w('# Functional limitation across cascade states')
 w('')
-w('> **本表取代 `结局梯度.md`。** 原版有两处实现错误：① 参照组混入「无痛但已诊断」者（占无痛组：HRS 45.2%、CHARLS 28.9%、LASI 5.9%），OR 被系统性低估 9–45%；② ELSA/SHARE 的 `s2` 是「已诊断（不分治疗）」，与其余五库的「已诊断未治疗」混在同一合并里。修正脚本 `31_outcome_gradient_v2.py`，复盘见 `分析复盘_问题清单.md`。')
+w('> Reference group: no pain and no diagnosis.')
 w('')
 w('**口径**：结局 = ADL 任何受限（0/1）；每库 logistic，个体聚类稳健；跨库 DerSimonian–Laird 合并 log OR；协变量 = 年龄（每 10 岁）、性别、教育（低/中 vs 高）、财富五分位（cohort×wave）、城乡、共病数、吸烟。未加权（见方法说明）。')
 w('')
@@ -31,7 +29,7 @@ for panel,pn in [('A','A 频繁疼痛'),('B','B 关节疼痛')]:
         w('| {} | {} | **{:.2f}（{:.2f}–{:.2f}）** | {} | {:.0f} | {} |'.format(pn,lab.get(r['term'],r['term']),r.OR,r.lo,r.hi,int(r.k),r.I2,r.cohorts))
 w('')
 w('> 读法：未诊断的疼痛者承担了已诊断组约 **60%（A，4.057/6.713）、65%（B，2.040/3.133）** 的额外功能负担——漏诊人群不是轻症人群。')
-w('> 「无痛但已诊断」组 ADL 仍显著更差（A 1.96、B 1.87），说明**曾获诊断本身是功能受损的长期标记**，与当前是否疼痛无关。这一格是原设计看不见、修正参照组后浮现的。')
+w('> 「无痛但已诊断」组 ADL 仍显著更差（A 1.96、B 1.87），说明**曾获诊断本身是功能受损的长期标记**，与当前是否疼痛无关。这一格只有在参照组排除「无痛但已诊断」者后才可见。')
 w('')
 
 w('## 表 2　四状态（仅 5 个有治疗变量的库，独立报告，不与表 1 合并）')
@@ -91,5 +89,5 @@ w('1. **横断面**：诊断与疼痛同时测量，「已诊断」与「病更�
 w('2. **未加权**：描述性统计用抽样权重 + WHO 标化，回归用未加权以估计条件效应——两者分工需在方法里写明。')
 w('3. **聚类层级**：标准误仅按个体聚类，未按社区/PSU。CHARLS、LASI、SHARE 为多阶段整群抽样，CI 可能偏窄。')
 
-open(os.path.join(OUT,'结局梯度_修正版.md'),'w',encoding='utf-8').write('\n'.join(L))
+open(os.path.join(OUT,'31_outcome_table.md'),'w',encoding='utf-8').write('\n'.join(L))
 print('\n'.join(L))

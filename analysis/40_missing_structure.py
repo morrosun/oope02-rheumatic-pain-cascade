@@ -11,8 +11,6 @@ RAW = os.environ.get("AGING_DB_RAW_ROOT", os.path.join(ROOT, "data_raw"))
 OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 import os, numpy as np, pandas as pd, pyreadstat
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
-DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 L=[]; w=lambda s:(L.append(str(s)),print(s,flush=True))
 W=pd.read_csv(os.path.join(OUT,"16_weights.csv"),dtype={"ID":str})[["cohort","ID","wave","weight"]]
 

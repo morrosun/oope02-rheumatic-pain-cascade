@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-37: 四状态描述表的修正版 —— 把「无痛但已诊断」从「无痛」里拆出来
+37: Four-state descriptive table — separates "no pain but previously diagnosed" from "no pain"
 输出：37_four_state_v2.csv / 37_four_state_v2.md
 说明：加权（harmonized 人-波权重），未做年龄标化（与原 17_four_state 口径一致，
       便于逐项对照；标化版见 31 的回归结果）。
@@ -11,8 +11,6 @@ RAW = os.environ.get("AGING_DB_RAW_ROOT", os.path.join(ROOT, "data_raw"))
 OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 import os, numpy as np, pandas as pd, pyreadstat
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
-DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 def num(s): return pd.to_numeric(s,errors="coerce")
 W=pd.read_csv(os.path.join(OUT,"16_weights.csv"),dtype={"ID":str})[["cohort","ID","wave","weight"]]
 

@@ -11,7 +11,6 @@ DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 import os, warnings
 import numpy as np, pandas as pd, pyreadstat
 warnings.filterwarnings("ignore")
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 BASE = os.environ.get("AGING_DB_RAW", os.path.join(ROOT, "data_raw"))
 CH=os.path.join(DL, "1. CHARLS  中国/CHARLS_中国/Working_data/charls.dta")
 def num(s): return pd.to_numeric(s,errors="coerce")

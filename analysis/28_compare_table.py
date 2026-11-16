@@ -6,7 +6,6 @@ RAW = os.environ.get("AGING_DB_RAW_ROOT", os.path.join(ROOT, "data_raw"))
 OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 import os, pandas as pd, numpy as np
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 w6=pd.read_csv(os.path.join(OUT,"27_charls_w6_row.csv"))
 st6=pd.read_csv(os.path.join(OUT,"27_charls_w6_state.csv"))
 tB=pd.read_csv(os.path.join(OUT,"17_cascade_tierB.csv"))

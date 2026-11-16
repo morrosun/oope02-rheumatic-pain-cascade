@@ -9,7 +9,6 @@ import os, json
 import pyreadstat
 import pandas as pd
 
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 FILES = {
  "CHARLS": (os.path.join(DL, "1. CHARLS  中国/CHARLS_中国/Working_data/charls.dta"),
             ["ID","wave","age","ragender","raeducl","arthre","rxarthr","rxarthr_c",

@@ -13,8 +13,6 @@ DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 import os, warnings
 import numpy as np, pandas as pd, pyreadstat, statsmodels.api as sm
 warnings.filterwarnings("ignore")
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
-DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 def num(s): return pd.to_numeric(s,errors="coerce")
 
 def anypos(df,cols):

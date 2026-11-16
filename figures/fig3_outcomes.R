@@ -35,7 +35,7 @@ root <- local({
   f <- sub("--file=", "", a[grep("--file=", a)])
   if (length(f)) normalizePath(file.path(dirname(f), "..")) else normalizePath("..")
 })
-outd <- file.path(root, "manuscript", "figures")
+outd <- file.path(root, "outputs", "figures")
 dir.create(outd, showWarnings = FALSE, recursive = TRUE)
 
 per <- read_csv(file.path(root, "outputs", "31_outcome_v2.csv"), show_col_types = FALSE)

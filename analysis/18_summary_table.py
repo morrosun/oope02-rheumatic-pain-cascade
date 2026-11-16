@@ -7,7 +7,6 @@ OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 import os, pandas as pd, numpy as np
 
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 A = pd.read_csv(os.path.join(OUT,"17_cascade_tierA.csv"))
 B = pd.read_csv(os.path.join(OUT,"17_cascade_tierB.csv"))
 F = pd.read_csv(os.path.join(OUT,"17_four_state.csv"))
@@ -87,7 +86,7 @@ mm = M.groupby("cohort").apply(lambda g: pd.Series({
 mm["cohort"]=mm["cohort"].map(NAME)
 L.append(md_table(mm, ["cohort","总人波","疼痛缺失%","诊断缺失%","治疗缺失%"],
                   ["库","总人波","疼痛缺失%","诊断缺失%","治疗缺失%"]))
-L.append("\n> ⚠️ **本表的「治疗缺失%」是按全部人波算的，不能用来判断治疗率的分母是否干净。** 治疗率的分母是「已被诊断者」，按此重算（`30_audit2.py`）：")
+L.append("\n> ⚠️ **本表的「治疗缺失%」是按全部人波算的，不能用来判断治疗率的分母是否干净。** 治疗率的分母是「已被诊断者」，按此重算：")
 L.append(">")
 L.append("> | 库 | 诊断者 n | 有治疗值 | **诊断者中缺失** | 逐波 |")
 L.append("> |---|---:|---:|---:|---|")

@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-44: 疼痛缺失的选择偏倚 —— 加权、年龄标准化后的疼痛率上下界
-修正 41 号脚本的口径问题：41 的 painrate 是未加权粗率，与表 2（加权+标化）不可比
-（KLoSA 粗率 61.6% vs 标化 51.9%）。
-本脚本按 33 号的口径（加权 + WHO 2000–2025 标化，50 岁以上重归一）
-重算纳入组疼痛率，并把疼痛缺失者分别全部记为「无痛」与「全部记为有痛」，得到上下界。
-输出：44_pain_bounds_weighted.csv / 44_pain_bounds_weighted.txt
+44: Selection bias from missing pain items — weighted, age-standardised bounds
+Same weighting and WHO 2000-2025 standardisation as 33_std_ci.py (renormalised over ages 50+).
+Respondents with a missing pain item are assigned in turn to no pain (lower bound) and to pain
+(upper bound). Output: 44_pain_bounds_weighted.csv / .txt
 """
 import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -13,8 +11,6 @@ RAW = os.environ.get("AGING_DB_RAW_ROOT", os.path.join(ROOT, "data_raw"))
 OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 import os, numpy as np, pandas as pd, pyreadstat
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
-DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 
 STD_W = {1: 5370, 2: 4550, 3: 3720, 4: 2970, 5: 2210, 6: 1520, 7: 910, 8: 630}
 EDGES = [50, 55, 60, 65, 70, 75, 80, 85, 200]

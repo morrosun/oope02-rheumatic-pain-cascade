@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-31: A3 修正版 —— 修复两处结构性问题
-  (1) 参照组洁净：参照 = 无痛【且未诊断】；"无痛已诊断"单列为 s4，不再污染参照
-  (2) 构念对齐：主模型用三状态（无痛/痛未诊断/痛已诊断），7 库全部可比；
-      四状态（拆治疗）仅在 5 个有 tx 变量的库内做，不与三状态库合并
-输出：31_outcome_v2.csv / 31_pooled_v2.csv / A3修正版.md
+31: Functional-outcome model (final specification)
+  (1) Reference group: no pain AND no diagnosis; people with a previous diagnosis
+      but no current pain are a separate state (s4).
+  (2) Main model uses three states (no pain / pain undiagnosed / pain diagnosed),
+      comparable across all cohorts. The four-state model (splitting treatment) is
+      fitted only within cohorts that carry a treatment item.
+Output: 31_outcome_v2.csv / 31_pooled_v2.csv
 """
 import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -14,8 +16,6 @@ DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 import os, warnings
 import numpy as np, pandas as pd, pyreadstat, statsmodels.api as sm
 warnings.filterwarnings("ignore")
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
-DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 def num(s): return pd.to_numeric(s,errors="coerce")
 
 def dl(est,se):

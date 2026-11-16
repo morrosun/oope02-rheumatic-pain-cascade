@@ -12,7 +12,6 @@ DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 import os, warnings
 import numpy as np, pandas as pd, pyreadstat, statsmodels.api as sm
 warnings.filterwarnings("ignore")
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 BASE = os.environ.get("AGING_DB_RAW", os.path.join(ROOT, "data_raw"))
 CH=os.path.join(DL, "1. CHARLS  中国/CHARLS_中国/Working_data/charls.dta")
 def num(s): return pd.to_numeric(s,errors="coerce")
@@ -57,7 +56,7 @@ w6=pd.concat(fr,ignore_index=True)
 w6["ID"]=w6["ID"].astype(str)
 w6["_nm"]=w6[cols[1:]].notna().sum(axis=1)
 w6=w6.sort_values(["ID","res_wave","_nm"],ascending=[True,False,False]).drop_duplicates("ID",keep="first")
-# 【修正】随访 ADL 只用 6 项，与基线 adlab_c（6 项 ADL）同构念
+# Follow-up ADL uses the same six items as baseline (adlab_c)
 ADL6=["db001","db003","db005","db007","db009","db011"]
 IADL6=["db012","db014","db016","db018","db020","db022"]
 w6["adl6"]=(w6[ADL6]>=2).any(axis=1).astype(float)

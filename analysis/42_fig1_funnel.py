@@ -7,7 +7,7 @@
 tx 只在「有治疗条目的波次」里可观测（HRS w5–11、MHAS w3–5、CHARLS w1–4、
 KLoSA w3–8、LASI w1、SHARE 各面板对应波次；ELSA 无此条目）。
 因此对有三段数据的库，整行限制在这些波次内，使三段同分母；
-ELSA 只报两段。该限制对诊断覆盖率的影响 ≤1.1 个百分点（见 43_diag_txwaves.txt）。
+ELSA 只报两段。该限制对诊断覆盖率的影响 ≤1.1 个百分点。
 
 四个量都在同一次整群 bootstrap 中计算：
   pain_rate        = 疼痛 / 全人群
@@ -22,8 +22,6 @@ OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 import os, numpy as np, pandas as pd, pyreadstat
 
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
-DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 B   = 1000
 RNG = np.random.default_rng(20261114)
 

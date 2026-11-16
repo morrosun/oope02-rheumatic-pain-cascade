@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-19: A2 —— 级联流失的决定因素（诊断 = 有疼痛者中是否确诊；治疗 = 确诊且有疼痛者中是否用药）
+19: Determinants of loss along the cascade (diagnosis among people with pain; treatment among those diagnosed and still in pain)
 每库 logistic（个体聚类稳健），按面板随机效应合并 log OR。
 输出：19_determinants.csv（逐库）、19_pooled.csv（合并）、级联流失决定因素.md
 """
@@ -16,8 +16,6 @@ import pyreadstat
 import statsmodels.api as sm
 
 warnings.filterwarnings("ignore")
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
-DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 
 # ---------------- 工具 ----------------
 def anypos(df, cols):

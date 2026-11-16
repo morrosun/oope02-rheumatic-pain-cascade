@@ -7,7 +7,6 @@ OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 import os, pyreadstat, pandas as pd, numpy as np
 
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 CFG = [
  ("CHARLS", os.path.join(DL, "1. CHARLS  中国/CHARLS_中国/Raw_data/Harmonized_CHARLS_D/H_CHARLS_D_Data.dta"),
   "ID", {w: f"r{w}wtresp" for w in range(1,6)}),

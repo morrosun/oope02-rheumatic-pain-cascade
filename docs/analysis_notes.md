@@ -66,12 +66,10 @@ male association with treatment (I² = 0) is reported as a common effect.
 
 | Script | Purpose |
 |---|---|
-| `01_dump_labels.py` | Variable names and labels for the working-layer files |
-| `02`–`04`, `06`, `09` | PubMed novelty scans (rounds 1–5) |
 | `05_feasibility.py` | Which cohorts carry pain, diagnosis and treatment items |
 | `07_wave_coverage.py` | Wave-level coverage of the cascade variables |
 | `08_cascade_counts.py` | Unweighted descriptive cascade counts |
-| `10`–`13` | CHARLS wave 6 structure, weights, ID format, skip logic |
+| `10`–`14` | CHARLS wave 6 structure, weights, ID format, skip logic, derived cascade |
 | `15_weight_scan.py` | Candidate weight variables per cohort |
 
 ### Main analysis
@@ -85,6 +83,7 @@ male association with treatment (I² = 0) is reported as a common effect.
 | `31_outcome_gradient_v2.py` | `31_outcome_v2.csv`, `31_pooled_v2.csv` (main outcome model) |
 | `24_incident.py` | `24_incident.csv`, `24_incident_pooled.csv`, `24_incident_desc.csv` |
 | `42_fig1_funnel.py` | `42_fig1_funnel.csv` — same-denominator cascade for Figure 1 |
+| `45_wave_weighted.py` | `45_wave_weighted.csv` — wave-level weighted rates (Table S3) |
 | `44_pain_bounds_weighted.py` | `44_pain_bounds_weighted.csv` — selection bounds |
 
 ### Tables and figures
@@ -103,11 +102,8 @@ male association with treatment (I² = 0) is reported as a common effect.
 | `34_cluster_se.py` | Alternative clustering |
 | `37_four_state_v2.py` | Four-state description with "no pain, previously diagnosed" separated |
 | `38_wq_linearity.py` | Wealth quintile as categorical rather than linear |
-| `43_diag_txwaves.py` | Effect of treating structural treatment missingness as zero |
-| `29`, `30`, `36` | Internal audits of the analysis |
 | `39_reconcile_share.py` | Reconciles the SHARE sample counts (484 weight-missing + 554 pain-missing = 1,038) |
 | `40_missing_structure.py` | Missingness structure by cohort and country |
-| `41_pain_missing_bias.py` | Direction of pain-item missingness (**unweighted crude rates — superseded by `44`**) |
 
 ## 6. Conventions worth knowing
 

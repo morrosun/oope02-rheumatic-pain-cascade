@@ -8,7 +8,6 @@ DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 import os, pyreadstat, pandas as pd, numpy as np
 
 BASE = os.environ.get("AGING_DB_RAW", os.path.join(ROOT, "data_raw"))
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 L=[]
 def w(s=""):
     L.append(str(s)); print(s, flush=True)

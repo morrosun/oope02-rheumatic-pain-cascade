@@ -13,13 +13,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RAW = os.environ.get("AGING_DB_RAW_ROOT", os.path.join(ROOT, "data_raw"))
 OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
 DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
-import os
 import numpy as np
 import pandas as pd
 import pyreadstat
 
-OUT = os.environ.get("OOPE02_OUT", os.path.join(ROOT, "outputs"))
-DL = os.environ.get("AGING_DB_ROOT", os.path.join(ROOT, "data"))
 
 # WHO World Standard Population 2000-2025，50+ 重归一
 STD_W = {1:5370, 2:4550, 3:3720, 4:2970, 5:2210, 6:1520, 7:910, 8:630}

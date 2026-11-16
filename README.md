@@ -1,6 +1,6 @@
 # Rheumatic pain care cascade across seven ageing cohorts
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24211370.svg)](https://doi.org/10.5281/zenodo.24211370)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24211369.svg)](https://doi.org/10.5281/zenodo.24211369)
 
 Analysis code for a cross-national study of the care cascade for rheumatic pain — from
 reporting pain, to carrying a diagnosis of arthritis or rheumatism, to receiving treatment —
@@ -81,20 +81,21 @@ alternative specifications reported as sensitivity analyses (`21`, `26`–`28`, 
 If you use this code, cite the archived release:
 
 > Wang K. *Analysis code for: The rheumatic pain care cascade across seven ageing cohorts*
-> (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.24211370
+> (v1.1.1). Zenodo. https://doi.org/10.5281/zenodo.24211369
 
 Concept DOI (always the latest version): https://doi.org/10.5281/zenodo.24211369
 
 ## Versioning and the Zenodo record
 
-The canonical archive is record **24211370** (concept DOI `10.5281/zenodo.24211369`). This
+The canonical archive is the concept DOI `10.5281/zenodo.24211369`, which always resolves to the
+latest version (currently v1.1.1). This
 repository also has the Zenodo–GitHub integration enabled, but the archived record was created
 directly through the Zenodo API and cannot be adopted by that integration.
 
 **Do not publish a new GitHub release in order to archive a new version** — Zenodo would create a
 second, independent record with its own concept DOI, and the same code would end up with two DOIs.
-To release a new version, open record 24211370 on Zenodo and use *New version*; the concept DOI
-then keeps resolving to the latest version.
+To release a new version, open the record on Zenodo and use *New version*; the concept DOI then
+keeps resolving to the latest version.
 
 ## License
 

@@ -20,3 +20,7 @@ Thumbs.db
 
 # manuscript/ is not part of this repository
 manuscript/
+
+# temporary API responses and local archives
+_*.json
+*.zip
